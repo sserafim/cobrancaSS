@@ -1,0 +1,29 @@
+.navbar-brand {
+	padding-top: 12px;
+}
+
+.panel-default {
+	margin-left: 20px;
+	margin-right: 20px;
+}
+
+.alert{
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.painel-body{
+	padding-top:10px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.ss-link-panel{
+	float:right;
+	padding: 0px;
+}
+
+.ss-link-title{
+	float:left;
+	padding-top: 2px;
+}
