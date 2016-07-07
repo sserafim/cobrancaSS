@@ -9,6 +9,9 @@
 </head>
 
 <section layout:fragment="conteudo">
+
+	<div layout:include="MensagemGeral"></div>
+	
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<div class="clearfix">
@@ -41,13 +44,13 @@
 							th:classappend="${titulo.pendente ? 'label-danger' : 'label-success'}"></span>
 						</td>
 						<td class="text-center"><a class="btn btn-link btn-xs"
-							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"> <span
+							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}" title="Editar" rel="tooltip" data-placement="top"> <span
 								class="glyphicon glyphicon-pencil"></span>
-						</a>
-						 <a class="btn btn-link btn-xs" data-toggle="modal" data-target="#confirmacaoExclusaoModal" th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}">
+						</a> <a class="btn btn-link btn-xs" data-toggle="modal"
+							data-target="#confirmacaoExclusaoModal"
+							th:attr="data-codigo=${titulo.codigo}, data-descricao=${titulo.descricao}" title="Excluir" rel="tooltip" data-placement="top">
 								<span class="glyphicon glyphicon-remove"></span>
-						</a>
-						</td>
+						</a></td>
 					</tr>
 					<tr>
 						<td colspan="6" th:if="${#lists.isEmpty(allTitulos)}">Nenhum
