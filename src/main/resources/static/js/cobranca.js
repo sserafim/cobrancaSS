@@ -16,10 +16,38 @@ $('#confirmacaoExclusaoModal').on('show.bs.modal', function(event) {
 	modal.find('.modal-body span').html('Tem certeza que deseja excluir o título <strong>' + descricaoTitulo + '</strong>?');
 });
 
-$(function(){
-	$('[rel="tooltip"]').tooltip();
-	$('.js_currency').maskMoney({decimal:',',thousands:'.',allowZero:true});
+
+$(function(){ 
+	$('[rel="tooltip"]').tooltip(); 
+	$('.js_currency').maskMoney({decimal:',',thousands:'.',allowZero:true}); 
+	
+	$('.js-atualizar-status').on('click',function(event) {
+		event.preventDefault();
+		
+		var botaoReceber = $(event.currentTarget);
+		var urlReceber = botaoReceber.attr('href');
+	
+		var response = $.ajax({
+			url: urlReceber,
+			type: 'PUT'
+		});
+		
+		
+		response.done(function(e){
+			
+			var codigoTitulo = botaoReceber.data('codigo');
+			$('[data-role=' + codigoTitulo + ']').html('<span class="label label-success">' + e + '</span>');
+			botaoReceber.hide();
+		});
+		
+		response.fail(function(e) {
+			console.log('Erro recebendo cobranca');
+		});
+
+	});
+
 });
+
 
 $("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
     $("#success-alert").alert('close');

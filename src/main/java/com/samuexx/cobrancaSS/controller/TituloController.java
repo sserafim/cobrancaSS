@@ -11,12 +11,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.samuexx.cobrancaSS.model.StatusTitulo;
 import com.samuexx.cobrancaSS.model.Titulo;
 import com.samuexx.cobrancaSS.repository.Titulos;
+import com.samuexx.cobrancaSS.repository.filter.TituloFilter;
 import com.samuexx.cobrancaSS.service.CadastroTituloService;
 
 @Controller
@@ -67,6 +69,14 @@ public class TituloController {
 	}
 	
 	
+	@RequestMapping(value = "/{codigo}/receber", method = RequestMethod.PUT)
+	public @ResponseBody String receber(@PathVariable Long codigo){
+		
+		return cadastroTituloService.receber(codigo);
+	
+	}
+	
+	
 	@RequestMapping(value ="{codigo}",method = RequestMethod.DELETE)
 	public String excluir(@PathVariable Long codigo,RedirectAttributes attributes){
 		cadastroTituloService.excluir(codigo);
@@ -77,8 +87,10 @@ public class TituloController {
 	}
 	
 	@RequestMapping
-	public ModelAndView pesquisa(){
-		List<Titulo> todosTitulos = titulos.findAll();
+	public ModelAndView pesquisa(@ModelAttribute("filtro") TituloFilter filtro){
+		
+		List<Titulo> todosTitulos = cadastroTituloService.filtrar(filtro);
+		
 		ModelAndView mv = new ModelAndView("PesquisaTitulos");
 		mv.addObject("allTitulos",todosTitulos);
 		return mv;
