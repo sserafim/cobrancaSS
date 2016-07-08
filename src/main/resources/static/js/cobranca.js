@@ -20,3 +20,11 @@ $(function(){
 	$('[rel="tooltip"]').tooltip();
 	$('.js_currency').maskMoney({decimal:',',thousands:'.',allowZero:true});
 });
+
+$("#success-alert").fadeTo(2000, 500).slideUp(500, function(){
+    $("#success-alert").alert('close');
+});
+
+$("#alert-danger").fadeTo(2000, 500).slideUp(500, function(){
+    $("#alert-danger").alert('close');
+});
