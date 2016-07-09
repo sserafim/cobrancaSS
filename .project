@@ -68,11 +68,4 @@
 		<nature>org.jboss.tools.cdi.core.cdinature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>src/main/resources/static/images/logo.png</name>
-			<type>1</type>
-			<location>C:/Users/Samuel/Pictures/logo.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>
