@@ -10,6 +10,8 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @SpringApplicationConfiguration(classes = CobrancaSsApplication.class)
 @WebAppConfiguration
 public class CobrancaSsApplicationTests {
+	
+	
 
 	@Test
 	public void contextLoads() {

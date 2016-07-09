@@ -8,7 +8,7 @@ import com.samuexx.cobrancaSS.model.Titulo;
 
 public interface Titulos extends JpaRepository<Titulo, Long>{
 	
-	public List<Titulo> findByDescricaoContaining(String descricao);
+	public List<Titulo> findByDescricaoContainingOrderByCodigoDesc(String descricao);
 		
 	
 
